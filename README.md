@@ -1,5 +1,11 @@
 # belg: a tool for calculating Boltzmann entropy of landscape gradients
 
+This repository stores scripts linked to the examples section of:
+
+> Nowosad, J.; Gao, P. **belg: A Tool for Calculating Boltzmann Entropy of Landscape Gradients**. Entropy 2020, 22, 937. https://doi.org/10.3390/e22090937
+
+The paper introduces [the **belg** R package](https://cran.r-project.org/package=belg).
+
 ## Requirements
 
 To reproduce the following examples, you need to install several R packages.
