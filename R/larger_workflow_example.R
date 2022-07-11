@@ -8,7 +8,7 @@ library(sf)
 svn_dem = raster("data/svn_dem.tif")
 
 svn_grid_geom = st_as_sfc(st_bbox(svn_dem))
-svn_grid = st_make_grid(svn_grid_geom, cellsize = 5760)
+svn_grid = st_make_grid(svn_grid_geom, n = c(43, 29))
 svn_grid = st_sf(id = seq_along(svn_grid),
                  geom = svn_grid)
 
@@ -37,15 +37,15 @@ for (i in seq_len(nrow(svn_grid))){
 head(svn_grid)
 
 tm_slo_bol = tm_shape(svn_grid) +
-  tm_polygons("results", 
-              style = "cont",
-              palette = rev(carto_pal(n = 7, name = "Earth")),
-              title = "Boltzmann \nentropy \n(aggregation-based \nmethod)",
-              midpoint = mean(svn_grid$results),
-              contrast = c(0, 1),
-              colorNA = "#f5f5f5",
-              lwd = 0.5
-  ) +
-  tm_layout(legend.outside = TRUE,
-            frame = FALSE)
+ tm_polygons("results", 
+             style = "cont",
+             palette = rev(carto_pal(n = 7, name = "Earth")),
+             title = "Boltzmann \nentropy \n(aggregation-based \nmethod)",
+             midpoint = mean(svn_grid$results),
+             contrast = c(0, 1),
+             colorNA = "#f5f5f5",
+             lwd = 0.5
+ ) +
+ tm_layout(legend.outside = TRUE,
+           frame = FALSE)
 tm_slo_bol
